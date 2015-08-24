@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Studies{% endblock %}
+{% block head %}RadX Content Editor Application{% endblock %}
+{% block content %}
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="javascript:;">Home</a></li>
+				<li><a href="../">Content</a></li>
+				<li class="active">Studies</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">Studies <small></small></h1>
+			<!-- end page-header -->
+			
+			<!-- begin row -->
+			<div class="row">
+			    <!-- begin col-6 -->
+			    <div class="col-md-12">
+			        <!-- begin panel -->
+			        <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="table-basic-2">
+                        <div class="panel-heading">
+                    
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Studies</h4>
+                        </div>
+                        <div class="panel-body">
+		 			        <form class="navbar-form">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Enter keyword" />
+									<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+								</div>
+							</form>
+							<div>
+                            		<button type="button" class="btn btn-inverse"><i class="fa fa-plus"></i> Add Study</button>
+						
+						</div></div>
+                       	<div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Study Date</th>
+                                        <th>Modality</th>
+                                        <th>Description</th>
+                                        <th># Series</th>
+                                        <th># Images</th>
+                                        <th>Upload Date</th>
+                                        <th>Author</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><a href="#" id="dob" data-type="combodate" data-value="1999-05-15" data-format="YYYY-MM-DD" data-viewformat="YYYY.MM.DD" data-template="YYYY . MMM . D" data-pk="1" data-title="Enter Study Date"></a></td>
+                                        <td><a href="#" id="modality" data-type="select" data-pk="1" data-value="1" data-title="Select Modality">CT</a></td>
+                                        <td><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter Description">No contrast abdomen </a></td>
+                                        <td>2</td>
+                                        <td>76</td>
+                                        <td><a href="#" id="meeting_start" data-type="datetime" data-pk="1" data-url="/post" data-placement="right" data-title="Set date & time">15/03/2013 12:45</a></td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>2014.02.03</td>
+                                        <td>MR</td>
+                                        <td>ACL Tear</td>
+                                        <td>4</td>
+                                        <td>300</td>
+                                        <td>2015.06.23</td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>2014.02.03</td>
+                                        <td>CR</td>
+                                        <td>Chest Pain</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>2015.06.23</td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>2013.12.03</td>
+                                        <td>PET/CT</td>
+                                        <td>Cardiac study on 109 year old male runner</td>
+                                        <td>9</td>
+                                        <td>900</td>
+                                        <td>2015.06.23</td>
+                                        <td>Vishal Ghandi</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>1999.01.26</td>
+                                        <td>MR</td>
+                                        <td>Breast 62 year old female</td>
+                                        <td>6</td>
+                                        <td>260</td>
+                                        <td>2015.06.23</td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>2000.11.10</td>
+                                        <td>US</td>
+                                        <td>Kidney stone</td>
+                                        <td>1</td>
+                                        <td>344</td>
+                                        <td>2015.07.24</td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>2014.02.03</td>
+                                        <td>MG</td>
+                                        <td>Routine</td>
+                                        <td>4</td>
+                                        <td>4</td>
+                                        <td>2015.08.23</td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>2014.08.03</td>
+                                        <td>MG</td>
+                                        <td>Diagnostic 6 months</td>
+                                        <td>8</td>
+                                        <td>8</td>
+                                        <td>2015.06.23</td>
+                                        <td>Dr. Goldman</td>
+                                        <td><a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end panel -->
+			        <!-- begin panel -->
+
+                   <!-- end panel -->
+			    </div>
+			    <!-- end col-6 -->
+			    <!-- begin col-6 -->
+			</div>
+			<!-- end row -->
+		</div>
+
+
+{% endblock %}
