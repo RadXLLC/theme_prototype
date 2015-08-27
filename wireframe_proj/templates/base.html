@@ -11,13 +11,13 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen" />
-
+<!-- 	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen" />
+ -->
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" media="screen" />
 	<link href="{% static 'wrap/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css' %}" rel="stylesheet" media="screen" />
 	<link href="{% static 'wrap/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen" />
-	<link href="{% static 'wrap/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" media="screen" />
+	<link href="{% static 'wrap/plugins/font-awesome/css/font-awesome.css' %}" rel="stylesheet" media="screen" />
 	<link href="{% static 'wrap/css/animate.min.css' %}" rel="stylesheet" media="screen" />
 	<link href="{% static 'wrap/css/style.min.css' %}" rel="stylesheet" media="screen" />
 	<link href="{% static 'wrap/css/style-responsive.min.css' %}" rel="stylesheet" media="screen" />
@@ -31,9 +31,19 @@
 	<link href="{% static 'wrap/plugins/bootstrap-datepicker/css/datepicker.css' %}" rel="stylesheet" media="screen" id="theme"/>
 	<link href="{% static 'wrap/plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" media="screen" id="theme"/>
 	<link href="{% static 'wrap/plugins/bootstrap-datetimepicker/css/datetimepicker.css' %}" rel="stylesheet" media="screen" id="theme"/>
-	<link href="{% static 'wrap/plugins/select2/select2.css' %}" rel="stylesheet" media="screen" id="theme"/>
+	<link href="{% static 'wrap/plugins/select2/dist/css/select2.css' %}" rel="stylesheet" media="screen" id="theme"/>
 	<link href="{% static 'wrap/plugins/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css' %}" rel="stylesheet" media="screen" id="theme"/>
 	<!-- ================== END PAGE CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE FOR UPLOAD ================== -->
+    <link href="{% static 'wrap/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'wrap/plugins/jquery-file-upload/css/jquery.fileupload.css' %}" rel="stylesheet" />
+    <link href="{% static 'wrap/plugins/jquery-file-upload/css/jquery.fileupload-ui.css' %}" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL STYLE FOR WIZARD ================== -->
+	<link href="{% static 'wrap/plugins/bootstrap-wizard/css/bwizard.min.css' %}" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
 
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="{% static 'wrap/plugins/pace/pace.min.js' %}" ></script>
@@ -41,10 +51,15 @@
 
 </head>
 <body>
-	<h1>{% block head %}{% endblock %}</h1>
+	<h1>  {% block head %}{% endblock %}</h1>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
 	
-	{% block content %}{% endblock %}
-
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-without-sidebar page-header-fixed">
+		{% block content %}{% endblock %}
+	</div>
 
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="{% static 'wrap/plugins/jquery/jquery-1.9.1.min.js' %}" ></script>
@@ -70,17 +85,49 @@
 	<script src="{% static 'wrap/plugins/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js' %}" ></script>
 	<script src="{% static 'wrap/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}" ></script>
 	<script src="{% static 'wrap/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js' %}" ></script>
-	<script src="{% static 'wrap/plugins/select2/select2.min.js' %}" ></script>
+	<script src="{% static 'wrap/plugins/select2/dist/js/select2.min.js' %}" ></script>
 	<script src="{% static 'wrap/plugins/mockjax/jquery.mockjax.js' %}" ></script>
 	<script src="{% static 'wrap/plugins/moment/moment.min.js' %}" ></script>
 	<script src="{% static 'wrap/js/form-editable.js' %}" ></script>
 	<script src="{% static 'wrap/js/apps.min.js' %}" ></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS FOR UPLOAD ================== -->
+	<script src="{% static 'wrap/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/vendor/tmpl.min.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/vendor/load-image.min.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.iframe-transport.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload-process.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload-image.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload-audio.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload-video.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload-validate.js' %}"></script>
+    <script src="{% static 'wrap/plugins/jquery-file-upload/js/jquery.fileupload-ui.js' %}"></script>
+    <!--[if (gte IE 8)&(lt IE 10)]>
+        <script src="{% static 'wrap/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
+    <![endif]-->
+	<script src="{% static 'wrap/js/form-multiple-upload.demo.min.js' %}"></script>
+	<script src="{% static 'wrap/js/apps.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
 	
+	<!-- ================== BEGIN PAGE LEVEL JS FOR WIZARDS ================== -->
+	<script src="{% static 'wrap/plugins/bootstrap-wizard/js/bwizard.js' %}"></script>
+	<script src="{% static 'wrap/js/form-wizards.demo.min.js' %}"></script>
+	<script src="{% static 'wrap/js/apps.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script src="{% static 'wrap/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+
 	<script>
 		$(document).ready(function() {
 			App.init();
 			FormEditable.init();
+			FormMultipleUpload.init();
+			FormWizard.init();
 		});
 	</script>
 
