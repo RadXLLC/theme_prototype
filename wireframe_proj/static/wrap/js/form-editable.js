@@ -114,7 +114,12 @@ var handleEditableFieldConstruct = function() {
         source: [
             {value: 1, text: 'CT'},
             {value: 2, text: 'MR'},
-            {value: 3, text: 'CR'}
+            {value: 3, text: 'CR'},
+            {value: 4, text: 'MG'},
+            {value: 5, text: 'PET'},
+            {value: 6, text: 'NM'},
+            {value: 7, text: 'US'},
+            {value: 8, text: 'XA'}
         ],
         display: function(value, sourceData) {
              var icons = {'': '', 1: '<i class="fa fa-male m-r-5"></i>', 2: '<i class="fa fa-female m-r-5"></i>'},
@@ -127,11 +132,37 @@ var handleEditableFieldConstruct = function() {
              }
         }   
     });
+
+    $('#author').editable({
+        prepend: 'not selected',
+        source: [
+            {value: 1, text: 'Dr. Goldman'},
+            {value: 2, text: 'Dr. Ghandi'},
+            {value: 3, text: 'Dr. Shastri'}
+        ],
+        display: function(value, sourceData) {
+             var icons = {'': '', 1: '<i class="fa fa-male m-r-5"></i>', 2: '<i class="fa fa-female m-r-5"></i>'},
+                 elem = $.grep(sourceData, function(o){return o.value == value;});
+                 
+             if(elem.length) {    
+                 $(this).text(elem[0].text); 
+             } else {
+                 $(this).empty(); 
+             }
+        }   
+    });
+
+
     $('#group').editable({ 
         showbuttons: false 
     });
     $('#status').editable(); 
     $('#vacation').editable({
+        datepicker: { 
+            todayBtn: 'linked' 
+        } 
+    });
+    $('.radx_datepicker').editable({
         datepicker: { 
             todayBtn: 'linked' 
         } 

@@ -45,6 +45,25 @@
 	<link href="{% static 'wrap/plugins/bootstrap-wizard/css/bwizard.min.css' %}" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL STYLE ================== -->
 
+	<!-- ================== BEGIN PAGE LEVEL STYLE FOR DATEPICKERS================== -->
+	<link href="{% static 'wrap/plugins/bootstrap-datepicker/css/datepicker.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/ionRangeSlider/css/ion.rangeSlider.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/ionRangeSlider/css/ion.rangeSlider.skinNice.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/password-indicator/css/password-indicator.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/bootstrap-combobox/css/bootstrap-combobox.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/bootstrap-select/bootstrap-select.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css' %}" rel="stylesheet" />
+	<link href="{% static 'wrap/plugins/jquery-tag-it/css/jquery.tagit.css' %}" rel="stylesheet" />
+    <link href="{% static 'wrap/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css' %}" rel="stylesheet" />
+    <link href="{% static 'wrap/plugins/select2/dist/css/select2.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'wrap/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+
+
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="{% static 'wrap/plugins/pace/pace.min.js' %}" ></script>
 	<!-- ================== END BASE JS ================== -->
@@ -118,7 +137,28 @@
 	<script src="{% static 'wrap/js/form-wizards.demo.min.js' %}"></script>
 	<script src="{% static 'wrap/js/apps.min.js' %}"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
-	
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static 'wrap/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+	<script src="{% static 'wrap/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+	<script src="{% static 'wrap/plugins/masked-input/masked-input.min.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+	<script src="{% static 'wrap/plugins/password-indicator/js/password-indicator.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-combobox/js/bootstrap-combobox.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-select/bootstrap-select.min.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js' %}"></script>
+	<script src="{% static 'wrap/plugins/jquery-tag-it/js/tag-it.min.js' %}"></script>
+    <script src="{% static 'wrap/plugins/bootstrap-daterangepicker/moment.js' %}"></script>
+    <script src="{% static 'wrap/plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'wrap/plugins/select2/dist/js/select2.min.js' %}"></script>
+    <script src="{% static 'wrap/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+	<script src="{% static 'wrap/js/form-plugins.demo.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+
+
 	<script src="{% static 'wrap/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
 
 
@@ -128,6 +168,8 @@
 			FormEditable.init();
 			FormMultipleUpload.init();
 			FormWizard.init();
+			FormPlugins.init();
+
 		});
 	</script>
 

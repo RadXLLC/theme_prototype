@@ -6,7 +6,7 @@
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
 				<li><a href="javascript:;">Home</a></li>
-                <li><a href="../">Content</a></li>
+				<li><a href="../">Content</a></li>
 				<li class="active">Cases</li>
 			</ol>
 			<!-- end breadcrumb -->
@@ -20,19 +20,402 @@
 			    <div class="col-md-12">
 			        <!-- begin panel -->
 			        <!-- begin panel -->
-                    <div class="panel panel-inverse" data-sortable-id="table-basic-2">
+                    <div class="panel panel-inverse" data-sortable-id="ui-widget-2">
                         <div class="panel-heading">
-                    
                             <div class="panel-heading-btn">
-                                <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Case</button>
-                                <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-search"></i> Search</button>
+                                <a href="#add-dialog" data-toggle="modal">
+                                	<button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Case</button>
+                                </a>
+                                <a href="#search-dialog" data-toggle="modal">
+                                	<button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-search"></i> Search</button>
+                                </a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                             </div>
                             <h4 class="panel-title">Cases</h4>
                         </div>
+
+							<!-- #modal-dialog -->
+							<div class="modal fade" id="add-dialog">
+								<div class="modal-dialog" style="width : 70%">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Add Case</h4>
+										</div>
+										<div class="modal-body">
+                                            <div class="panel-body">
+                                                <div class="panel-body">
+                                                    <form action="/" method="POST">
+                                                        <div id="wizard">
+                                                            <ol>
+                                                                <li>
+                                                                    Select Study 
+                                                                    <small>Select study for this case</small>
+                                                                </li>
+                                                                <li>
+                                                                    Edit Case Infomration
+                                                                    <small>Edit and Save case information</small>
+                                                                </li>
+                                                            </ol>
+                                                            <!-- begin wizard step-1 -->
+                                                            <div>
+                                                                <legend class="pull-left width-full">Select Study</legend>
+                                                                <table class="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>#</th>
+                                                                            <th>Study Date</th>
+                                                                            <th>Modality</th>
+                                                                            <th>Description</th>
+                                                                            <th># Series</th>
+                                                                            <th># Images</th>
+                                                                            <th>Upload Date</th>
+                                                                            <th>Author</th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>1</td>
+                                                                            <td>2012.05.23</td>
+                                                                            <td>CT</td>
+                                                                            <td>No contrast abdomen</td>
+                                                                            <td>2</td>
+                                                                            <td>76</td>
+                                                                            <td>15/03/2013 12:45</td>
+                                                                            <td>Dr. Goldman</td>
+                                                                            <td>
+                                                                                <a href="javascript:;" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+                                                                                <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2</td>
+                                                                            <td>2014.02.03</td>
+                                                                            <td>MR</td>
+                                                                            <td>ACL Tear</td>
+                                                                            <td>4</td>
+                                                                            <td>300</td>
+                                                                            <td>2015.06.23</td>
+                                                                            <td>Dr. Goldman</td>
+                                                                            <td>
+                                                                                <a href="javascript:;" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+                                                                                <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>3</td>
+                                                                            <td>2014.02.03</td>
+                                                                            <td>CR</td>
+                                                                            <td>Chest Pain</td>
+                                                                            <td>1</td>
+                                                                            <td>2</td>
+                                                                            <td>2015.06.23</td>
+                                                                            <td>Dr. Goldman</td>
+                                                                            <td>
+                                                                                <a href="javascript:;" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+                                                                                <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>4</td>
+                                                                            <td>2013.12.03</td>
+                                                                            <td>PET/CT</td>
+                                                                            <td>Cardiac study on 109 year old male runner</td>
+                                                                            <td>9</td>
+                                                                            <td>900</td>
+                                                                            <td>2015.06.23</td>
+                                                                            <td>Vishal Ghandi</td>
+                                                                            <td>
+                                                                                <a href="javascript:;" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+                                                                                <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+                                                                            </td>
+                                                                       </tr>
+                                                                        <tr>
+                                                                            <td>5</td>
+                                                                            <td>1999.01.26</td>
+                                                                            <td>MR</td>
+                                                                            <td>Breast 62 year old female</td>
+                                                                            <td>6</td>
+                                                                            <td>260</td>
+                                                                            <td>2015.06.23</td>
+                                                                            <td>Dr. Goldman</td>
+                                                                            <td>
+                                                                                <a href="javascript:;" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+                                                                                <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <!-- end wizard step-1 -->
+                                                            <!-- begin wizard step-2 -->
+                                                            <div>
+                                                                <legend class="pull-left width-full">Edit Case Information</legend>
+                                                                <form class="form-horizontal">
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-4 control-label">Case ID</label>
+                                                                        <div class="col-md-2">
+                                                                            <input type="text" class="form-control" placeholder="1" disabled />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-4 control-label">Case ID</label>
+                                                                        <div class="col-md-2">
+                                                                            <input type="text" class="form-control" placeholder="1" disabled />
+                                                                        </div>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                            <!-- end wizard step-2 -->
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+										</div>
+										<div class="modal-footer">
+											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+											<a href="javascript:;" class="btn btn-sm btn-success">Add Case</a>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <!-- #SEARCH -->
+                            <!-- #modal-dialog -->
+							<div class="modal fade" id="search-dialog">
+								<div class="modal-dialog" style="width : 40%">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title">Search Studies</h4>
+										</div>
+										<div class="modal-body">
+                                            <div>
+                                                <legend class="pull-left width-full">Enter search properties...</legend>
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Case ID</label>
+                                                        <div class="col-md-2">
+                                                            <input type="text" class="form-control" placeholder="Case ID" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Creation Date</label>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group input-daterange">
+                                                                <input type="text" class="form-control" name="start" placeholder="Date Start" />
+                                                                <span class="input-group-addon">to</span>
+                                                                <input type="text" class="form-control" name="end" placeholder="Date End" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Author</label>
+                                                        <div class="col-md-4">
+                                                            <select class="form-control">
+                                                                <option>Dr. Goldman</option>
+                                                                <option>Dr. Ghandi</option>
+                                                                <option>Dr. Shastri</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Modality (multiple)</label>
+                                                        <div class="col-md-2">
+                                                            <select multiple class="form-control">
+                                                                <option>MR</option>
+                                                                <option>CT</option>
+                                                                <option>CR</option>
+                                                                <option>MG</option>
+                                                                <option>PET</option>
+                                                                <option>US</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Sub-Specialty (multiple)</label>
+                                                        <div class="col-md-4">
+                                                            <select multiple class="form-control">
+                                                                <option>Neuroradiology</option>
+                                                                <option>Body</option>
+                                                                <option>Breast</option>
+                                                                <option>Chest</option>
+                                                                <option>Pet/CT</option>
+                                                                <option>Cardiac</option>
+                                                                <option>Nuclear Medicine</option>
+                                                                <option>Vascular Imaging</option>
+                                                                <option>Interventional Radiology</option>
+                                                                <option>Pediatric</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Title (contains)</label>
+                                                        <div class="col-md-6">
+                                                            <textarea class="form-control" placeholder="Title text" rows="1"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Description (contains)</label>
+                                                        <div class="col-md-6">
+                                                            <textarea class="form-control" placeholder="Description text" rows="1"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-4 control-label">Clinical History (contains)</label>
+                                                        <div class="col-md-6">
+                                                            <textarea class="form-control" placeholder="Clinical History text" rows="1"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </form>
+        										<div class="modal-footer">
+        											<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+        											<a href="javascript:;" class="btn btn-sm btn-success">Search</a>
+        										</div>
+									       </div>
+								        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- #EDIT -->
+                            <!-- #modal-dialog -->
+                            <div class="modal fade" id="edit-dialog">
+                                <div class="modal-dialog" style="width : 40%">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">Edit Case properties</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Case ID</label>
+                                                    <div class="col-md-2">
+                                                        <input type="text" class="form-control" placeholder="1" disabled />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Creation Date</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="datepicker-autoClose" placeholder="1999-05-15" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Author</label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>Dr. Goldman</option>
+                                                            <option>Dr. Ghandi</option>
+                                                            <option>Dr. Shastri</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Modality</label>
+                                                    <div class="col-md-2">
+                                                        <select class="form-control">
+                                                            <option>MR</option>
+                                                            <option>CT</option>
+                                                            <option>CR</option>
+                                                            <option>MG</option>
+                                                            <option>PET</option>
+                                                            <option>US</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Sub-Specialty</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control">
+                                                            <option>Neuroradiology</option>
+                                                            <option>Body</option>
+                                                            <option>Breast</option>
+                                                            <option>Chest</option>
+                                                            <option>Pet/CT</option>
+                                                            <option>Cardiac</option>
+                                                            <option>Nuclear Medicine</option>
+                                                            <option>Vascular Imaging</option>
+                                                            <option>Interventional Radiology</option>
+                                                            <option>Pediatric</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Title</label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Good MR Case" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Description</label>
+                                                    <div class="col-md-6">
+                                                        <textarea class="form-control" placeholder="The MR of the knee shows why you shouldn't ski." rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Clinical History</label>
+                                                    <div class="col-md-6">
+                                                        <textarea class="form-control" placeholder="Patient fell while skiing" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Access</label>
+                                                    <div class="col-md-7" data-scrollbar="true" data-height="120px">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>User</th>
+                                                                    <th>Read</th>
+                                                                    <th>Modify</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Dr. Goldman</td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Dr. Ghandi</td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Dr. Shastri</td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Dr. Smith</td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                    <td><input type="checkbox" value="" /></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>                                                
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                                            <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                        	<div class="panel-body">
+
+
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -58,12 +441,14 @@
                                         <td>Patient fell while skiing</td>
                                         <td>Body</td>
                                         <td>
-                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">Edit</a>
+                                            <a href="#edit-dialog" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Edit</a>
                                             <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                            
                         </div>
                     </div>
                     <!-- end panel -->

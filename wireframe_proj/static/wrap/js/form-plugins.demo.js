@@ -22,6 +22,10 @@ var handleDatepicker = function() {
         todayHighlight: true,
         autoclose: true
     });
+    $('.datepicker-autoClose').datepicker({
+        todayHighlight: true,
+        autoclose: true
+    });
 };
 
 var handleIonRangeSlider = function() {
