@@ -157,6 +157,13 @@
 	<script src="{% static 'wrap/js/form-plugins.demo.js' %}"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 
+	<!-- ================== BEGIN PAGE LEVEL JS TEACHING FILE ================== -->
+	<script src="{% static 'wrap/plugins/ckeditor/ckeditor.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.js' %}"></script>
+	<script src="{% static 'wrap/plugins/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js' %}"></script>
+	<script src="{% static 'wrap/js/form-wysiwyg.demo.min.js' %}"></script>
+	<script src="{% static 'wrap/js/apps.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
 
 
 	<script src="{% static 'wrap/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
@@ -169,6 +176,7 @@
 			FormMultipleUpload.init();
 			FormWizard.init();
 			FormPlugins.init();
+			FormWysihtml5.init();
 
 		});
 	</script>

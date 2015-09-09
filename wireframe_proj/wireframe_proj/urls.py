@@ -18,11 +18,13 @@ from django.contrib import admin
 from mainpage.views import *
 from studies.views import *
 from cases.views import *
+from teaching_files.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^studies/', studies_index),
     url(r'^cases/', cases_index),
+    url(r'^teaching_files/edit', teaching_files_edit),
     url(r'^$', main_page),
 
 ]

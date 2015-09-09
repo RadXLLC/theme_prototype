@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+{% block title %}Teaching File Edit{% endblock %}
+{% block head %}Teaching File:{% endblock %}
+{% block content %}
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-inverse" style="height: 350px";>
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="#access-dialog" data-toggle="modal" >
+            			<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Access</button>
+        			</a>
+				</div>
+				<h4 class="panel-title">Teaching File Info</h4>
+			</div>
+			<form class="form-horizontal">
+	            <div class="form-group">
+	                <label class="col-md-3 control-label">Teaching File ID</label>
+	                <div class="col-md-2">
+	                    <input type="text" class="form-control" placeholder="1" disabled />
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-3 control-label">Creation Date</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="datepicker-autoClose" placeholder="1999-05-15" />
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-3 control-label">Author</label>
+	                <div class="col-md-4">
+	                    <select class="form-control">
+	                        <option>Dr. Goldman</option>
+	                        <option>Dr. Ghandi</option>
+	                        <option>Dr. Shastri</option>
+	                    </select>
+	                </div>
+	            </div>
+				<div class="form-group">
+					<label class="control-label col-md-3">Labels</label>
+					<div class="col-md-8">
+                        <ul id="jquery-tagIt-default">
+                            <li>MR</li>
+                            <li>Pattern</li>
+                            <li>Knee</li>
+                        </ul>
+					</div>
+				</div>
+				<div class="form-group">
+                    <label class="col-md-3 control-label">Case Discussion</label>
+                    <div class="col-md-8">
+                    	<a href="#casediscussion-dialog" data-toggle="modal" >
+                        	<textarea class="form-control" placeholder="Description text" rows="3"></textarea>
+                    	</a>
+                    </div>
+                </div>
+	        </form>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="panel panel-inverse" style="height: 350px";>
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="#selectcase-dialog" data-toggle="modal" >
+                		<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Select Case</button>
+            		</a>
+					<a 	
+						data-toggle="modal" 
+						onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+                		<button  type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>View Case</button>
+            		</a>
+				</div>
+				<h4 class="panel-title">Case Info</h4>
+			</div>
+			<form class="form-horizontal">
+				<div class="form-group">
+	                <label class="col-md-4 control-label">Case ID</label>
+	                <div class="col-md-2">
+	                    <input type="text" class="form-control" placeholder="1" disabled />
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-4 control-label">Title</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" placeholder="Good MR Case" disabled/>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-4 control-label">Author</label>
+	                <div class="col-md-4">
+	                	<input type="text" class="form-control" placeholder="Dr. Goldman" disabled />
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-4 control-label">Modality</label>
+	                <div class="col-md-4">
+	                	<input type="text" class="form-control" placeholder="MR" disabled />
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-4 control-label">Sub-Specialty</label>
+	                <div class="col-md-4">
+	                	<input type="text" class="form-control" placeholder="Neuroradiology" disabled />
+	                </div>
+	            </div>
+	        </form>
+    	</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-inverse" style="height: 350px";>
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="#createquiz-dialog" data-toggle="modal" >
+                		<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Create Quiz</button>
+            		</a>
+				</div>
+				<h4 class="panel-title">Quizes</h4>
+			</div>
+			<div>
+				List of quizes
+    		</div>
+    	</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="panel panel-inverse" style="height: 350px";>
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="#savepresentation-dialog" data-toggle="modal" >
+                		<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Save Presentation</button>
+            		</a>
+				</div>
+				<h4 class="panel-title">Study Presentations</h4>
+			</div>
+			<div>
+				List of Study Presentation States
+    		</div>
+    	</div>
+	</div>
+
+</div>
+
+<!-- #modal-dialog SELECTCASE -->
+<div class="modal fade" id="selectcase-dialog">
+	<div class="modal-dialog" style="width : 70%">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Select Case</h4>
+			</div>
+			<div class="modal-body">
+                <div class="panel-body">
+                    <div class="panel-body">
+                        <form action="/" method="POST">
+                            <div>
+                                <table class="table table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>ID</th>
+	                                        <th>Creation Date</th>
+	                                        <th>Author</th>
+	                                        <th>Modality</th>
+	                                        <th>Title</th>
+	                                        <th>Description</th>
+	                                        <th>Clinical History</th>
+	                                        <th>Sub-Specialty</th>               
+	                                        <th></th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <tr>
+	                                        <td>1</td>
+	                                        <td>2014.02.03</td>
+	                                        <td>Dr. Goldman</td>
+	                                        <td>MR</td>
+	                                        <td>Good MR Case</td>
+	                                        <td>The MR of the knee shows why you shouldn't ski.</td>
+	                                        <td>Patient fell while skiing</td>
+	                                        <td>Body</td>
+	                                        <td>
+	                                            <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+	                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+	                                        </td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td>2</td>
+	                                        <td>2014.02.03</td>
+	                                        <td>Dr. Goldman</td>
+	                                        <td>MR</td>
+	                                        <td>Good MR Case</td>
+	                                        <td>The MR of the knee shows why you shouldn't ski.</td>
+	                                        <td>Patient fell while skiing</td>
+	                                        <td>Body</td>
+	                                        <td>
+	                                            <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+	                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+	                                        </td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td>3</td>
+	                                        <td>2014.02.03</td>
+	                                        <td>Dr. Goldman</td>
+	                                        <td>MR</td>
+	                                        <td>Good MR Case</td>
+	                                        <td>The MR of the knee shows why you shouldn't ski.</td>
+	                                        <td>Patient fell while skiing</td>
+	                                        <td>Body</td>
+	                                        <td>
+	                                            <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+	                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+	                                        </td>
+	                                    </tr>
+	                                </tbody>
+                            	</table>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- #CREATEQUIZ-MODAL-DIALOG -->
+<div class="modal fade" id="createquiz-dialog">
+    <div class="modal-dialog" style="width : 60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Create Quiz</h4>
+            </div>
+            <div class="panel-body panel-form">
+                <form action="/" name="wysihtml5" method="POST">
+					<textarea class="textarea form-control" id="wysihtml5" placeholder="Enter text ..." rows="12"></textarea>
+				</form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END CREATEQUIZ-MODAL-DIALOG -->
+
+<!-- #ADDLABEL-MODAL-DIALOG -->
+<div class="modal fade" id="casediscussion-dialog">
+    <div class="modal-dialog" style="width : 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Edit Case Discussion</h4>
+            </div>
+            <div class="panel-body panel-form">
+                <form action="/" name="wysihtml5" method="POST">
+					<textarea class="textarea form-control" id="wysihtml5" placeholder="Enter text ..." rows="12"></textarea>
+				</form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END ADDLABEL-MODAL-DIALOG -->
+
+<!-- #ACCESS-MODAL-DIALOG -->
+<div class="modal fade" id="access-dialog">
+    <div class="modal-dialog" style="width : 40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Edit Teaching File Access<small> allow other users to read or modify this teaching file</small></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Access</label>
+                        <div class="col-md-7" data-scrollbar="true" data-height="120px">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Read</th>
+                                        <th>Modify</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dr. Goldman</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Ghandi</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Shastri</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Smith</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>                                                
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
