@@ -1,149 +1,278 @@
 {% extends "base.html" %}
 {% block title %}Teaching File Edit{% endblock %}
-{% block head %}Teaching File:{% endblock %}
+{% block head %}Teaching File - ID 1 {% endblock %}
 {% block content %}
 
+<!-- begin row -->
 <div class="row">
-	<div class="col-md-4">
-		<div class="panel panel-inverse" style="height: 350px";>
-			<div class="panel-heading">
-				<div class="panel-heading-btn">
-					<a href="#access-dialog" data-toggle="modal" >
-            			<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Access</button>
-        			</a>
+    <div class="col-md-6">
+        <div class="panel-group" id="accordion">
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Teaching File Info
+						</a>
+					</h3>
 				</div>
-				<h4 class="panel-title">Teaching File Info</h4>
-			</div>
-			<form class="form-horizontal">
-	            <div class="form-group">
-	                <label class="col-md-3 control-label">Teaching File ID</label>
-	                <div class="col-md-2">
-	                    <input type="text" class="form-control" placeholder="1" disabled />
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="col-md-3 control-label">Creation Date</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="form-control" id="datepicker-autoClose" placeholder="1999-05-15" />
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="col-md-3 control-label">Author</label>
-	                <div class="col-md-4">
-	                    <select class="form-control">
-	                        <option>Dr. Goldman</option>
-	                        <option>Dr. Ghandi</option>
-	                        <option>Dr. Shastri</option>
-	                    </select>
-	                </div>
-	            </div>
-				<div class="form-group">
-					<label class="control-label col-md-3">Labels</label>
-					<div class="col-md-8">
-                        <ul id="jquery-tagIt-default">
-                            <li>MR</li>
-                            <li>Pattern</li>
-                            <li>Knee</li>
-                        </ul>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<p class="text-right m-b-0">
+						<a href="#access-dialog" data-toggle="modal" >
+        					<button type="button" class="btn btn-xs"><i class="fa"></i>Access</button>
+    					</a>
+					</p>
+					<div class="panel-body">
+						<form class="form-horizontal">
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Teaching File ID</label>
+				                <div class="col-md-2">
+				                    <input type="text" class="form-control" placeholder="1" disabled />
+				                </div>
+				            </div>
+							<div class="form-group">
+			                    <label class="col-md-3 control-label">Title</label>
+			                    <div class="col-md-8">
+			                    	<input type="text" class="form-control input-sm" placeholder="Title" />
+			                    </div>
+			                </div>
+							<div class="form-group">
+			                    <label class="col-md-3 control-label">Description</label>
+			                    <div class="col-md-8">
+			                    	<input type="textarea" rows="3" class="form-control input-sm" placeholder="Description" />			                    	
+			                    </div>
+			                </div>
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Creation Date</label>
+				                <div class="col-md-6">
+				                    <input type="text" class="form-control" id="datepicker-autoClose" placeholder="1999-05-15" />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Author</label>
+				                <div class="col-md-4">
+				                    <select class="form-control">
+				                        <option>Dr. Goldman</option>
+				                        <option>Dr. Ghandi</option>
+				                        <option>Dr. Shastri</option>
+				                    </select>
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Difficulty Level</label>
+				                <div class="col-md-4">
+				                    <select class="form-control">
+				                        <option>General</option>
+				                        <option>Resident</option>
+				                        <option>Post Graduate</option>
+				                        <option>Fellow</option>
+				                    </select>
+				                </div>
+				            </div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Labels</label>
+								<div class="col-md-4">
+			                        <ul id="jquery-tagIt-default">
+			                            <li>MR</li>
+			                            <li>Pattern</li>
+			                            <li>Knee</li>
+			                        </ul>
+								</div>
+							</div>
+				        </form>
 					</div>
 				</div>
-				<div class="form-group">
-                    <label class="col-md-3 control-label">Case Discussion</label>
-                    <div class="col-md-8">
-                    	<a href="#casediscussion-dialog" data-toggle="modal" >
-                        	<textarea class="form-control" placeholder="Description text" rows="3"></textarea>
-                    	</a>
-                    </div>
-                </div>
-	        </form>
+			</div>
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Case Info
+						</a>
+					</h3>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#selectcase-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Select Case</button>
+	            		</a>
+						<a 	
+							data-toggle="modal" 
+							onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+	                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Case</button>
+	            		</a>
+					</p>
+					<div class="panel-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+				                <label class="col-md-4 control-label">Case ID</label>
+				                <div class="col-md-2">
+				                    <input type="text" class="form-control" placeholder="1" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Title</label>
+				                <div class="col-md-6">
+				                    <input type="text" class="form-control" placeholder="Good MR Case" disabled/>
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Author</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="Dr. Goldman" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Modality</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="MR" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Sub-Specialty</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="Neuroradiology" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Description</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="Case Description" disabled />
+				                </div>
+				            </div>
+				        </form>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Images
+						</a>
+					</h3>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#savepresentation-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Select Images</button>
+	            		</a>
+					</p>
+					<div class="panel-body">
+						<table class="table table-hover">
+			                <thead>
+		                        <tr>
+		                            <th>Name</th>
+		                            <th>Type</th>
+		                            <th>Description</th>
+		                            <th></th>
+		                        </tr>
+		                    </thead>
+			                <tbody>
+		                        <tr>
+		                            <td>Series 1 Image 32</td>
+		                            <td>Image</td>
+		                            <td>This presentation show image 32 of the first series with an arrow</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Image</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>Series 2</td>
+		                            <td>Series</td>
+		                            <td>This presentation show the complete coronal series</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Series</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>Series 4 Image 1</td>
+		                            <td>Image</td>
+		                            <td>This presentation shows the scout images</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Image</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Quizes
+						</a>
+					</h3>
+				</div>
+				<div id="collapseFour" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#createquiz-dialog" data-toggle="modal" >
+                			<button type="button" class="btn btn-xs"><i class="fa"></i>Create Quiz</button>
+            			</a>
+					</p>
+					<div class="panel-body">
+						<table class="table table-hover">
+			                <thead>
+		                        <tr>
+		                            <th>Name</th>
+		                            <th>Description</th>
+		                            <th></th>
+		                        </tr>
+		                    </thead>
+			                <tbody>
+		                        <tr>
+		                            <td>Pre-test</td>
+		                            <td>This is a quiz given at the beginning of the course</td>
+		                            <td>
+		                            	<a href="#createquiz-dialog" data-toggle="modal" >
+		                				<button type="button" class="btn btn-xs"><i class="fa"></i>View Quiz</button>
+		            					</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>First Quiz</td>
+		                            <td>This is the first quiz</td>
+		                            <td>
+		                            	<a href="#createquiz-dialog" data-toggle="modal" >
+		                				<button type="button" class="btn btn-xs"><i class="fa"></i>View Quiz</button>
+		            					</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>Final Quiz</td>
+		                            <td>This is the final quiz</td>
+		                            <td>
+		                            	<a href="#createquiz-dialog" data-toggle="modal" >
+		                				<button type="button" class="btn btn-xs"><i class="fa"></i>View Quiz</button>
+		            					</a>
+		            				</td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+
+					</div>
+				</div>
+			</div>
+
 		</div>
-	</div>
-
-	<div class="col-md-4">
-		<div class="panel panel-inverse" style="height: 350px";>
-			<div class="panel-heading">
-				<div class="panel-heading-btn">
-					<a href="#selectcase-dialog" data-toggle="modal" >
-                		<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Select Case</button>
-            		</a>
-					<a 	
-						data-toggle="modal" 
-						onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
-                		<button  type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>View Case</button>
-            		</a>
-				</div>
-				<h4 class="panel-title">Case Info</h4>
-			</div>
-			<form class="form-horizontal">
-				<div class="form-group">
-	                <label class="col-md-4 control-label">Case ID</label>
-	                <div class="col-md-2">
-	                    <input type="text" class="form-control" placeholder="1" disabled />
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="col-md-4 control-label">Title</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="form-control" placeholder="Good MR Case" disabled/>
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="col-md-4 control-label">Author</label>
-	                <div class="col-md-4">
-	                	<input type="text" class="form-control" placeholder="Dr. Goldman" disabled />
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="col-md-4 control-label">Modality</label>
-	                <div class="col-md-4">
-	                	<input type="text" class="form-control" placeholder="MR" disabled />
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="col-md-4 control-label">Sub-Specialty</label>
-	                <div class="col-md-4">
-	                	<input type="text" class="form-control" placeholder="Neuroradiology" disabled />
-	                </div>
-	            </div>
-	        </form>
-    	</div>
-	</div>
+    </div>
 </div>
+<!-- end row -->
 
-<div class="row">
-	<div class="col-md-4">
-		<div class="panel panel-inverse" style="height: 350px";>
-			<div class="panel-heading">
-				<div class="panel-heading-btn">
-					<a href="#createquiz-dialog" data-toggle="modal" >
-                		<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Create Quiz</button>
-            		</a>
-				</div>
-				<h4 class="panel-title">Quizes</h4>
-			</div>
-			<div>
-				List of quizes
-    		</div>
-    	</div>
-	</div>
-
-	<div class="col-md-4">
-		<div class="panel panel-inverse" style="height: 350px";>
-			<div class="panel-heading">
-				<div class="panel-heading-btn">
-					<a href="#savepresentation-dialog" data-toggle="modal" >
-                		<button type="button" class="btn btn-xs btn-inverse"><i class="fa"></i>Save Presentation</button>
-            		</a>
-				</div>
-				<h4 class="panel-title">Study Presentations</h4>
-			</div>
-			<div>
-				List of Study Presentation States
-    		</div>
-    	</div>
-	</div>
-
-</div>
 
 <!-- #modal-dialog SELECTCASE -->
 <div class="modal fade" id="selectcase-dialog">
@@ -227,6 +356,46 @@
 	</div>
 </div>
 
+
+<!-- #SAVEPRESENTATION-MODAL-DIALOG -->
+<div class="modal fade" id="savepresentation-dialog">
+    <div class="modal-dialog" style="width : 60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Select Images</h4>
+            </div>
+            <div class="panel-body panel-form">
+				<div class="embed-responsive embed-responsive-16by9">
+				  <iframe class="embed-responsive-item" src="http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One"></iframe>
+				</div>
+			</div>
+
+            <div class="modal-footer">
+            	<form class="form-horizontal">
+	            	<div class="form-group">
+		                <label class="col-md-4 control-label">Name</label>
+		                <div class="col-md-3">
+		                    <input type="text" class="form-control" placeholder="Series 1 Image 32" />
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="col-md-4 control-label">Description</label>
+		                <div class="col-md-6">
+		                    <input type="text" class="form-control" placeholder="Description"/>
+		                </div>
+		            </div>
+	            </form>
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Select Image</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Select Series</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Select Study</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END CREATEQUIZ-MODAL-DIALOG -->
+
 <!-- #CREATEQUIZ-MODAL-DIALOG -->
 <div class="modal fade" id="createquiz-dialog">
     <div class="modal-dialog" style="width : 60%">
@@ -237,9 +406,23 @@
             </div>
             <div class="panel-body panel-form">
                 <form action="/" name="wysihtml5" method="POST">
-					<textarea class="textarea form-control" id="wysihtml5" placeholder="Enter text ..." rows="12"></textarea>
+					<textarea class="textarea form-control" id="wysihtml51" placeholder="Enter text ..." rows="12"></textarea>
 				</form>
             </div>
+        	<form class="form-horizontal">
+            	<div class="form-group">
+	                <label class="col-md-4 control-label">Name</label>
+	                <div class="col-md-2">
+	                    <input type="text" class="form-control" placeholder="Quiz Name" />
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-md-4 control-label">Description</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" placeholder="Quiz Description" />
+	                </div>
+	            </div>
+            </form>
 
             <div class="modal-footer">
                 <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
@@ -250,7 +433,7 @@
 </div>
 <!-- #END CREATEQUIZ-MODAL-DIALOG -->
 
-<!-- #ADDLABEL-MODAL-DIALOG -->
+<!-- #CASEDISCUSSION-MODAL-DIALOG -->
 <div class="modal fade" id="casediscussion-dialog">
     <div class="modal-dialog" style="width : 70%">
         <div class="modal-content">

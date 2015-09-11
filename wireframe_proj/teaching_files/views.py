@@ -16,3 +16,15 @@ def teaching_files_edit(request):
 	output = template.render(variables)
 
 	return HttpResponse(output)
+
+def teaching_files_index(request):
+	template = get_template('teaching_files_index.html')
+
+	variables = Context({
+			'head_title': 'Teaching Files',
+			'page_title': 'Index',
+			'page_body': 'Teaching File',
+		})
+	output = template.render(variables)
+
+	return HttpResponse(output)

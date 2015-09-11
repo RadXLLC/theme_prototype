@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^studies/', studies_index),
     url(r'^cases/', cases_index),
     url(r'^teaching_files/edit', teaching_files_edit),
+    url(r'^teaching_files/', teaching_files_index),
     url(r'^$', main_page),
 
 ]
