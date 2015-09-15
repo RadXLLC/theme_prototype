@@ -2,6 +2,58 @@
 {% block title %}Studies{% endblock %}
 {% block head %}RadX Content Editor Application{% endblock %}
 {% block content %}
+
+    <script>
+        // archive will send message with studyUID of uploaded study when finished
+        // using a postMessage()
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventHandler = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        eventHandler(messageEvent, function(e) {
+            var key = e.message ? "message" : "data";
+            var data = e[key];
+            alert("seriesUID = " + data);
+            var jsonURL = 'http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies';
+            var jsonData = { 'includefield' : 'all',
+                             'StudyInstanceUID' : data 
+                            }
+            
+            // this does not work
+            $.getJSON(jsonURL, jsonData, processJsonData );
+            // have to use something similar to 
+            // fetch_studies in case/views.py from the demo project
+            // also see getData in cases/cases.js
+            // The request for the studies info has the form
+            //http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies?includefield=all&StudyInstanceUID=data
+            /*  Put in studies/views.py
+                def fetch_study_info(request, page=100):
+                    requestURL = 'http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies'
+                    requestURL += '?includefield=all&StudyInstanceUID=' + data
+
+                    req = urllib2.Request((requestURL),headers = {'Accept': 'application/json'})
+                    res = urllib2.urlopen(req)
+                    return HttpResponse(res.read(), content_type="application/json")
+            */
+        }, false);
+        // end eventHandler
+
+        function processJsonData(data) {
+
+
+            // data should have the following fields
+            /*
+                study_UID = data.StudyInstanceUID
+                study_date_time = data.StudyDate + data.StudyTime
+                study_modality = data.ModalitiesInStudy
+                study_description = data.StudyDescription
+                number_of_series = data.NumberOfStudyRelatedSeries
+                numberOfImages = data.NumberOfStudyRelatedInstances
+            */
+        }
+        // end processJsonData
+
+    </script>
 		<div id="content" class="content">
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb pull-right">
@@ -103,7 +155,6 @@
                         <!-- begin accordian - ADDSTUDY -->
                         <div id="addStudy" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <form action="/" method="POST">
                                     <div id="wizard">
                                         <ol>
                                             <li>
@@ -117,43 +168,9 @@
                                         </ol>
                                         <!-- begin wizard step-1 -->
                                         <div>
-                                            <legend class="pull-left width-full">Upload Study</legend>
-                                            <form id="fileupload" action="wrap/global/plugins/jquery-file-upload/server/php/" method="POST" enctype="multipart/form-data">
-                                                <div class="row fileupload-buttonbar">
-                                                    <div class="col-md-12">
-                                                        <span class="btn btn-success fileinput-button">
-                                                            <i class="fa fa-plus"></i>
-                                                            <span>Add files...</span>
-                                                            <input type="file" name="files[]" multiple>
-                                                        </span>
-                                                        <button type="submit" class="btn btn-primary start">
-                                                            <i class="fa fa-upload"></i>
-                                                            <span>Start upload</span>
-                                                        </button>
-                                                        <button type="reset" class="btn btn-warning cancel">
-                                                            <i class="fa fa-ban"></i>
-                                                            <span>Cancel upload</span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger delete">
-                                                            <i class="glyphicon glyphicon-trash"></i>
-                                                            <span>Delete</span>
-                                                        </button>
-                                                        <!-- The global file processing state -->
-                                                        <span class="fileupload-process"></span>
-                                                    </div>
-                                                    <!-- The global progress state -->
-                                                    <div class="col-md-5 fileupload-progress fade">
-                                                        <!-- The global progress bar -->
-                                                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-success" style="width:0%;"></div>
-                                                        </div>
-                                                        <!-- The extended global progress state -->
-                                                        <div class="progress-extended">&nbsp;</div>
-                                                    </div>
-                                                </div>
-                                                <!-- The table listing the files available for upload/download -->
-                                                <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
-                                            </form>
+                                            <h3>Upload Study</h3>
+                                                <iframe id="upload_iframe" style="border: none; height : 400px; width: 800px;" src="http://52.11.158.42:8080/upload.html"></iframe>
+
                                         </div>
                                         <!-- end wizard step-1 -->
                                         <!-- begin wizard step-2 -->
@@ -232,7 +249,6 @@
                                         </div>
                                         <!-- end wizard step-2 -->
                                     </div>
-                                </form>
                             </div>
                         </div>
                         <!-- end accordian - ADDSTUDY -->
