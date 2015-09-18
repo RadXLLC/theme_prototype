@@ -19,6 +19,7 @@ from mainpage.views import *
 from studies.views import *
 from cases.views import *
 from teaching_files.views import *
+from case_reports.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -26,6 +27,8 @@ urlpatterns = [
     url(r'^cases/', cases_index),
     url(r'^teaching_files/edit', teaching_files_edit),
     url(r'^teaching_files/', teaching_files_index),
+    url(r'^case_reports/edit', case_reports_edit),
+    url(r'^case_reports/', case_reports_index),
     url(r'^$', main_page),
 
 ]

@@ -1,0 +1,884 @@
+{% extends "base.html" %}
+{% block title %}Case Report Edit{% endblock %}
+{% block head %}Case Report - ID 1 {% endblock %}
+{% block content %}
+
+<!-- begin row -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel-group" id="accordion">
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Case Report Info
+						</a>
+					</h3>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<p class="text-right m-b-0">
+						<a href="#access-dialog" data-toggle="modal" >
+        					<button type="button" class="btn btn-xs"><i class="fa"></i>Access</button>
+    					</a>
+					</p>
+					<div class="panel-body">
+						<form class="form-horizontal">
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Case Report ID</label>
+				                <div class="col-md-2">
+				                    <input type="text" class="form-control" placeholder="1" disabled />
+				                </div>
+				            </div>
+							<div class="form-group">
+			                    <label class="col-md-3 control-label">Title</label>
+			                    <div class="col-md-8">
+			                    	<input type="text" class="form-control input-sm" placeholder="Title" />
+			                    </div>
+			                </div>
+							<div class="form-group">
+			                    <label class="col-md-3 control-label">Description</label>
+			                    <div class="col-md-8">
+			                    	<input type="textarea" rows="3" class="form-control input-sm" placeholder="Description" />			                    	
+			                    </div>
+			                </div>
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Creation Date</label>
+				                <div class="col-md-6">
+				                    <input type="text" class="form-control" id="datepicker-autoClose" placeholder="1999-05-15" />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Author</label>
+				                <div class="col-md-4">
+				                    <select class="form-control">
+				                        <option>Dr. Goldman</option>
+				                        <option>Dr. Ghandi</option>
+				                        <option>Dr. Shastri</option>
+				                    </select>
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-3 control-label">Difficulty Level</label>
+				                <div class="col-md-4">
+				                    <select class="form-control">
+				                        <option>General</option>
+				                        <option>Resident</option>
+				                        <option>Post Graduate</option>
+				                        <option>Fellow</option>
+				                    </select>
+				                </div>
+				            </div>
+							<div class="form-group">
+								<label class="control-label col-md-3">Labels</label>
+								<div class="col-md-4">
+			                        <ul id="jquery-tagIt-default">
+			                            <li>MR</li>
+			                            <li>Report</li>
+			                            <li>Knee</li>
+			                        </ul>
+								</div>
+							</div>
+				        </form>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Case Info
+						</a>
+					</h3>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#selectcase-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Select Case</button>
+	            		</a>
+						<a 	
+							data-toggle="modal" 
+							onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+	                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Case</button>
+	            		</a>
+					</p>
+					<div class="panel-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+				                <label class="col-md-4 control-label">Case ID</label>
+				                <div class="col-md-2">
+				                    <input type="text" class="form-control" placeholder="1" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Title</label>
+				                <div class="col-md-6">
+				                    <input type="text" class="form-control" placeholder="Good MR Case" disabled/>
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Author</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="Dr. Goldman" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Modality</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="MR" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Sub-Specialty</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="Neuroradiology" disabled />
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label class="col-md-4 control-label">Description</label>
+				                <div class="col-md-4">
+				                	<input type="text" class="form-control" placeholder="Case Description" disabled />
+				                </div>
+				            </div>
+				        </form>
+					</div>
+				</div>
+			</div>
+			<div style="display: none;" class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Images
+						</a>
+					</h3>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#savepresentation-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Select Images</button>
+	            		</a>
+					</p>
+					<div class="panel-body">
+						<table class="table table-hover">
+			                <thead>
+		                        <tr>
+		                            <th>Name</th>
+		                            <th>Type</th>
+		                            <th>Description</th>
+		                            <th></th>
+		                        </tr>
+		                    </thead>
+			                <tbody>
+		                        <tr>
+		                            <td>Series 1 Image 32</td>
+		                            <td>Image</td>
+		                            <td>This presentation show image 32 of the first series with an arrow</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Image</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>Series 2</td>
+		                            <td>Series</td>
+		                            <td>This presentation show the complete coronal series</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Series</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>Series 4 Image 1</td>
+		                            <td>Image</td>
+		                            <td>This presentation shows the scout images</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One', 'Case ID: 11', 'width=800, height=600'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Image</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Case Discussion
+						</a>
+					</h3>
+				</div>
+				<div id="collapseFour" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#editdiscussion-dialog" data-toggle="modal" >
+                			<button type="button" class="btn btn-xs"><i class="fa"></i>Edit</button>
+            			</a>
+					</p>
+					<div class="panel-body">
+			            <div class="panel-body panel-form">
+			                <form action="/" name="wysihtml5" method="POST">
+								<textarea class="textarea form-control" placeholder="This is a case discussion." rows="24">This is a case discussion.  Click on the edit button to edit this discussion.</textarea>
+							</form>
+			            </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Report
+						</a>
+					</h3>
+				</div>
+				<div id="collapseFive" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#editreport-dialog" data-toggle="modal" >
+                			<button type="button" class="btn btn-xs"><i class="fa"></i>Edit</button>
+            			</a>
+					</p>
+					<div class="panel-body">
+						<div class="row">
+							<div class="well">
+			            		<form class="form-horizontal">
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Achilles Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tendonopathy</option>
+										        <option>Paratenonitis</option>
+										        <option>Haglund Syndrome</option>
+						                    </select>
+						                </div>
+						            </div>
+
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Peroneus Longus Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tendonopathy</option>
+										        <option>Subluxation / Dislocation</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+						            
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Peroneus Brevis Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tendonopathy</option>
+										        <option>Subluxation / Dislocation</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+
+						            
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Posterior Tibial (PTT)Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Flexor Digitorum Longus (FDL) Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Tibialis Anterior Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Extensor Hallucis Longus Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+
+
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Extensor Digitorum Longus Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+
+									<div class="form-group">
+						                <label class="col-md-4 control-label">Flexor Hallucis Longus (FHL) Tendon</label>
+						                <div class="col-md-4">
+						                    <select class="form-control">
+										        <option>Normal</option>
+										        <option>Partial Tear</option>
+										        <option>Complete Tear</option>
+										        <option>Tenosynovitis</option>
+										        <option>Tendonopathy</option>
+						                    </select>
+						                </div>
+						            </div>
+					        	</form>
+				            </div>
+			            </div>
+			        </div>
+				</div>
+			</div>
+			<div style="display: none;" class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							Videos
+						</a>
+					</h3>
+				</div>
+				<div id="collapseSix" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#selectvideos-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Select Video</button>
+	            		</a>
+						<a href="#addvideos-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Add Video</button>
+	            		</a>
+					</p>
+					<div class="panel-body">
+						<table class="table table-hover">
+			                <thead>
+		                        <tr>
+		                            <th>Name</th>
+		                            <th>Description</th>
+		                            <th></th>
+		                        </tr>
+		                    </thead>
+			                <tbody>
+		                        <tr>
+		                            <td>Video of Neuroradiology</td>
+		                            <td>This is a video from Cases in Radiology</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('https://www.youtube.com/watch?v=7IyjNiYPtxw', 'Video', 'width=1200, height=800'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Video</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>Second Part</td>
+		                            <td>This is the second part from Cases in Radiology</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('https://www.youtube.com/watch?v=JsFBQD8maLQ', 'Video', 'width=1200, height=800'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Video</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+
+		                    </tbody>
+		                </table>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: none;" class="panel panel-inverse overflow-hidden">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+						    <i class="fa fa-plus-circle pull-right"></i> 
+							References
+						</a>
+					</h3>
+				</div>
+				<div id="collapseSeven" class="panel-collapse collapse">
+					<p class="text-right m-b-0">
+						<a href="#selectreferences-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Select Reference</button>
+	            		</a>
+						<a href="#addreferences-dialog" data-toggle="modal" >
+	                		<button type="button" class="btn btn-xs"><i class="fa"></i>Add Reference</button>
+	            		</a>
+					</p>
+					<div class="panel-body">
+						<table class="table table-hover">
+			                <thead>
+		                        <tr>
+		                            <th>Name</th>
+		                            <th>Description</th>
+		                            <th></th>
+		                        </tr>
+		                    </thead>
+			                <tbody>
+		                        <tr>
+		                            <td>CT Brain reference</td>
+		                            <td>Safety Investigation of CT Brain Perfusion Scans</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://www.fda.gov/MedicalDevices/Safety/AlertsandNotices/ucm185898.htm', 'Reference', 'width=1200, height=800'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Reference</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+		                        <tr>
+		                            <td>CT Education reference</td>
+		                            <td>Image Gently: progress and challenges in CT education and advocacy</td>
+		                            <td>
+										<a 	data-toggle="modal" 
+											onclick="window.open('http://link.springer.com/article/10.1007%2Fs00247-011-2133-0', 'Reference', 'width=1200, height=800'); return false;">
+					                		<button  type="button" class="btn btn-xs"><i class="fa"></i>View Reference</button>
+					            		</a>
+		            				</td>
+		                        </tr>
+
+		                    </tbody>
+		                </table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+    </div>
+</div>
+<!-- end row -->
+
+
+<!-- #modal-dialog SELECTCASE -->
+<div class="modal fade" id="selectcase-dialog">
+	<div class="modal-dialog" style="width : 70%">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Select Case</h4>
+			</div>
+			<div class="modal-body">
+                <div class="panel-body">
+                    <div class="panel-body">
+                        <form action="/" method="POST">
+                            <div>
+                                <table class="table table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>ID</th>
+	                                        <th>Creation Date</th>
+	                                        <th>Author</th>
+	                                        <th>Modality</th>
+	                                        <th>Title</th>
+	                                        <th>Description</th>
+	                                        <th>Clinical History</th>
+	                                        <th>Sub-Specialty</th>               
+	                                        <th></th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    <tr>
+	                                        <td>1</td>
+	                                        <td>2014.02.03</td>
+	                                        <td>Dr. Goldman</td>
+	                                        <td>MR</td>
+	                                        <td>Good MR Case</td>
+	                                        <td>The MR of the knee shows why you shouldn't ski.</td>
+	                                        <td>Patient fell while skiing</td>
+	                                        <td>Body</td>
+	                                        <td>
+	                                            <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+	                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+	                                        </td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td>2</td>
+	                                        <td>2014.02.03</td>
+	                                        <td>Dr. Goldman</td>
+	                                        <td>MR</td>
+	                                        <td>Good MR Case</td>
+	                                        <td>The MR of the knee shows why you shouldn't ski.</td>
+	                                        <td>Patient fell while skiing</td>
+	                                        <td>Body</td>
+	                                        <td>
+	                                            <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+	                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+	                                        </td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td>3</td>
+	                                        <td>2014.02.03</td>
+	                                        <td>Dr. Goldman</td>
+	                                        <td>MR</td>
+	                                        <td>Good MR Case</td>
+	                                        <td>The MR of the knee shows why you shouldn't ski.</td>
+	                                        <td>Patient fell while skiing</td>
+	                                        <td>Body</td>
+	                                        <td>
+	                                            <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Select</a>
+	                                            <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Study</a>
+	                                        </td>
+	                                    </tr>
+	                                </tbody>
+                            	</table>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- #SAVEPRESENTATION-MODAL-DIALOG -->
+<div class="modal fade" id="savepresentation-dialog">
+    <div class="modal-dialog" style="width : 60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Select Images</h4>
+            </div>
+            <div class="panel-body panel-form">
+				<div class="embed-responsive embed-responsive-16by9">
+				  <iframe class="embed-responsive-item" src="http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One"></iframe>
+				</div>
+			</div>
+
+            <div class="modal-footer">
+            	<form class="form-horizontal">
+	            	<div class="form-group">
+		                <label class="col-md-4 control-label">Name</label>
+		                <div class="col-md-3">
+		                    <input type="text" class="form-control" placeholder="Series 1 Image 32" />
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="col-md-4 control-label">Description</label>
+		                <div class="col-md-6">
+		                    <input type="text" class="form-control" placeholder="Description"/>
+		                </div>
+		            </div>
+	            </form>
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Select Image</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Select Series</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Select Study</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END CREATEQUIZ-MODAL-DIALOG -->
+
+<!-- #EDITREPORT-MODAL-DIALOG -->
+<div class="modal fade" id="editreport-dialog">
+    <div class="modal-dialog" style="width : 60%; height : 70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Edit Report</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<form class="form-horizontal">
+						<div class="form-group">
+			                <label class="col-md-2 control-label">Select Sub-Specialty</label>
+			                <div class="col-md-3">
+			                    <select class="form-control">
+                                    <option>Neuroradiology</option>
+                                    <option>Body</option>
+                                    <option>Breast</option>
+                                    <option>Chest</option>
+                                    <option>Pet/CT</option>
+                                    <option>Cardiac</option>
+                                    <option>Nuclear Medicine</option>
+                                    <option>Vascular Imaging</option>
+                                    <option>Interventional Radiology</option>
+                                    <option>Pediatric</option>
+			                    </select>
+			                </div>
+			                <label class="col-md-2 control-label">Select Template</label>
+			                <div class="col-md-3">
+			                    <select class="form-control">
+			                        <option>Cervical Spine Report Template</option>
+			                        <option>Spinal Report Template</option>
+			                        <option>Upper Extremity Report Template</option>
+			                        <option>Lower Extremity Report Template</option>
+			                    </select>
+			                </div>
+			            </div>
+		        	</form>
+	            </div>
+				<div class="row">
+					<div class="well">
+	            		<form class="form-horizontal">
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Achilles Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tendonopathy</option>
+								        <option>Paratenonitis</option>
+								        <option>Haglund Syndrome</option>
+				                    </select>
+				                </div>
+				            </div>
+
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Peroneus Longus Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tendonopathy</option>
+								        <option>Subluxation / Dislocation</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+				            
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Peroneus Brevis Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tendonopathy</option>
+								        <option>Subluxation / Dislocation</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+
+				            
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Posterior Tibial (PTT)Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Flexor Digitorum Longus (FDL) Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Tibialis Anterior Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Extensor Hallucis Longus Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+
+
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Extensor Digitorum Longus Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+
+							<div class="form-group">
+				                <label class="col-md-3 control-label">Flexor Hallucis Longus (FHL) Tendon</label>
+				                <div class="col-md-3">
+				                    <select class="form-control">
+								        <option>Normal</option>
+								        <option>Partial Tear</option>
+								        <option>Complete Tear</option>
+								        <option>Tenosynovitis</option>
+								        <option>Tendonopathy</option>
+				                    </select>
+				                </div>
+				            </div>
+			        	</form>
+		            </div>
+	            </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END EDITREPORT-MODAL-DIALOG -->
+
+<!-- #EDITDISCUSSION-MODAL-DIALOG -->
+<div class="modal fade" id="editdiscussion-dialog">
+    <div class="modal-dialog" style="width : 70%; height : 70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Edit Case Discussion</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/" name="wysihtml5" method="POST">
+					<textarea class="textarea form-control" id="wysihtml5" placeholder="Enter text ..." rows="64">This a case discussion</textarea>
+				</form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END EDITDISCUSSION-MODAL-DIALOG -->
+
+<!-- #ACCESS-MODAL-DIALOG -->
+<div class="modal fade" id="access-dialog">
+    <div class="modal-dialog" style="width : 40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Edit Teaching File Access<small> allow other users to read or modify this teaching file</small></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Access</label>
+                        <div class="col-md-7" data-scrollbar="true" data-height="120px">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Read</th>
+                                        <th>Modify</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dr. Goldman</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Ghandi</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Shastri</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Smith</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>                                                
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

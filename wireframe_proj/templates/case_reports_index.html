@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+{% block title %}Case Report{% endblock %}
+{% block head %}RadX Content Editor Application{% endblock %}
+{% block content %}
+<div id="content" class="content">
+	<!-- begin breadcrumb -->
+	<ol class="breadcrumb pull-right">
+		<li><a href="javascript:;">Home</a></li>
+		<li><a href="../">Content</a></li>
+		<li class="active">Case Reports</li>
+	</ol>
+	<!-- end breadcrumb -->
+	<!-- begin page-header -->
+	<h1 class="page-header">Case Reports <small></small></h1>
+	<!-- end page-header -->
+	
+	<!-- begin row -->
+	<div class="row">
+	    <!-- begin col-6 -->
+	    <div class="col-md-12">
+	        <!-- begin panel -->
+	        <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="ui-widget-2">
+                <div id="accordion" class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="#add-dialog" data-toggle="modal">
+                        	<button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Case Report</button>
+                        </a>
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#search">
+                            <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-search"></i> Search</button>
+                        </a>
+
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <h4 class="panel-title">Case Reports</h4>
+                </div>
+                <!-- begin accordian - SEARCH -->
+                <div id="search" class="panel-collapse collapse">
+                    <div class="panel-body note-info">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Creation Date</th>
+                                    <th>Author</th>
+                                    <th>Difficulty</th>
+                                    <th>Label</th>
+                                    <th>Case Title</th>
+                                    <th>Case Author</th>
+                                    <th>Modality</th>
+                                    <th>Sub-Specialty</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <input type="text" class="form-control input-sm" placeholder="#" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="text" class="form-control input-sm" placeholder="Title" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="text" class="form-control input-sm" placeholder="Description" />
+                                        </div>
+                                    </td>
+                                    <td style="padding-left:0px; padding-right:0px">
+                                        <div class="input-group input-daterange">
+                                            <input type="text" class="form-control input-sm" name="start" placeholder="Date Start" />
+                                            <span class="input-group-addon">to</span>
+                                            <input type="text" class="form-control input-sm" name="end" placeholder="Date End" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="text" class="form-control input-sm" placeholder="Author" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <input type="text" class="form-control input-sm" placeholder="Difficulty" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div >
+                                            <input type="text" class="form-control input-sm" placeholder="Label" />
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <a href="#" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Search</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end accordian - SEARCH -->
+
+               	<div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Creation Date</th>
+                                <th>Author</th>
+                                <th>Difficulty</th>
+                                <th>Labels</th>
+                                <th>Case Title</th>
+                                <th>Case Author</th>
+                                <th>Modality</th>
+                                <th>Sub-Specialty</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>MR Knee Case Report</td>
+                                <td>MR Case Report with report</td>
+                                <td>2014.02.03</td>
+                                <td>Dr. Goldman</td>
+                                <td>General</td>
+                                <td>
+                                    <ul id="jquery-tagIt-default">
+                                        <li>MR</li>
+                                        <li>MR Report</li>
+                                        <li>Knee</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs m-r-5 " href="/case_reports/edit">Edit</a>
+                                    <a href="#view-dialog" data-toggle="modal">
+                                        <button type="button" class="btn btn-xs btn-inverse">View</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+	    </div>
+	</div>
+</div>
+
+
+
+
+<!-- #modal-dialogs -->
+
+
+
+<!-- #ADDDIALOG modal-dialog -->
+<div class="modal fade" id="add-dialog">
+    <div class="modal-dialog" style="width : 40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Create Case Report</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Title</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control input-sm" placeholder="Enter Title" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-8">
+                                <input type="textarea" rows="3" class="form-control input-sm" placeholder="Enter Description" />                                  
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="/case_reports/edit" class="btn btn-sm btn-success">Create Case Report</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #VIEWDIALOG modal-dialog -->
+<div class="modal fade" id="view-dialog">
+    <div class="modal-dialog" style="width : 90%; height : 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">View Study and Report</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <div class="col-md-5">
+                    <div class="well">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Achilles Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tendonopathy</option>
+                                        <option>Paratenonitis</option>
+                                        <option>Haglund Syndrome</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Peroneus Longus Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tendonopathy</option>
+                                        <option>Subluxation / Dislocation</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Peroneus Brevis Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tendonopathy</option>
+                                        <option>Subluxation / Dislocation</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Posterior Tibial (PTT)Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Flexor Digitorum Longus (FDL) Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Tibialis Anterior Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Extensor Hallucis Longus Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Extensor Digitorum Longus Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-6 control-label">Flexor Hallucis Longus (FHL) Tendon</label>
+                                <div class="col-md-6">
+                                    <select class="form-control">
+                                        <option>Normal</option>
+                                        <option>Partial Tear</option>
+                                        <option>Complete Tear</option>
+                                        <option>Tenosynovitis</option>
+                                        <option>Tendonopathy</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+
+                    <div class="col-md-7">
+                        <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" src="http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One"></iframe>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
