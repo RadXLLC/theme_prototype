@@ -359,6 +359,8 @@
 
 <!-- #SAVEPRESENTATION-MODAL-DIALOG -->
 <div class="modal fade" id="savepresentation-dialog">
+
+
     <div class="modal-dialog" style="width : 60%">
         <div class="modal-content">
             <div class="modal-header">
@@ -367,7 +369,7 @@
             </div>
             <div class="panel-body panel-form">
 				<div class="embed-responsive embed-responsive-16by9">
-				  <iframe class="embed-responsive-item" src="http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One"></iframe>
+				  <iframe id="eUnityFrame" class="embed-responsive-item"></iframe>
 				</div>
 			</div>
 
@@ -387,7 +389,7 @@
 		            </div>
 	            </form>
                 <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
-                <a href="javascript:;" class="btn btn-sm btn-success">Select Image</a>
+                <a onclick="handlePresentationStateButton();" class="btn btn-sm btn-success">Select Image</a>
                 <a href="javascript:;" class="btn btn-sm btn-success">Select Series</a>
                 <a href="javascript:;" class="btn btn-sm btn-success">Select Study</a>
             </div>
@@ -513,6 +515,45 @@
     </div>
 </div>
 
+{% endblock %}
 
+{% block pagescript %}
+<script>
+	var studyUID = "1.2.840.113619.2.244.3596.12859412.28115.1433503260.273";
+	var roomId = "2332";
 
+	$(document).ready(function() {
+
+		var eUnityURL = "http://54.200.77.149/eunityServer/eunityViewer";
+		var dicomArchive = "serviceInstance=DCM4CHEE";
+		var credentials = "user=admin&password=admin";
+		var collaboration = "autoCollaboration=true";
+		var q = "?";
+		var amp = "&";
+		//var displayURL = "http://54.200.77.149/eunityServer/eunityViewer?&serviceInstance=DCM4CHEE&serviceInstanceParameter=&user=admin&password=admin&studyUID=1.2.840.113711.7041822.1.5168.438634708.26.2134053244.150690&autoCollaboration=true&roomId=One"
+		var displayURL = eUnityURL + q + dicomArchive + amp + credentials + amp + collaboration + amp + "roomId=" + roomId + amp + "studyUID=" + studyUID;
+
+		document.getElementById("eUnityFrame").setAttribute("src", displayURL);
+
+	});
+		function handlePresentationStateButton() {
+			// https://affinityds.clientoutlook.com/1/rest/public/4444_1.3.12.2.1107.5.1.4.48475.4.0.467489493581061?roomId=4444&studyUID=1.3.12.2.1107.5.1.4.48475.4.0.467489493581061
+
+			var eUnityPSUrl = "https://affinityds.clientoutlook.com/1/rest/public/";
+			var bucketName = roomId + "_" + studyUID;
+
+			var requestURL = eUnityPSUrl + bucketName;
+
+			params = {
+				"roomId" : roomId,
+				"studyUID" : studyUID
+			}
+
+			$.getJSON(requestURL, params, processJSON);
+			function processJSON(data) {
+				alert("data");
+			}
+		};
+
+</script>
 {% endblock %}

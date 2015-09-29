@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% block title %}Teaching Block{% endblock %}
+{% block head %}RadX Content Editor Application{% endblock %}
+{% block content %}
+<div id="content" class="content">
+	<!-- begin breadcrumb -->
+	<ol class="breadcrumb pull-right">
+		<li><a href="javascript:;">Home</a></li>
+		<li><a href="../">Content</a></li>
+		<li class="active">Teaching Block</li>
+	</ol>
+	<!-- end breadcrumb -->
+	<!-- begin page-header -->
+	<h1 class="page-header">Teaching Blocks <small></small></h1>
+	<!-- end page-header -->
+	
+	<!-- begin row -->
+	<div class="row">
+	    <!-- begin col-6 -->
+	    <div class="col-md-12">
+	        <!-- begin panel -->
+	        <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="ui-widget-2">
+                <div id="accordion" class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="#add-dialog" data-toggle="modal">
+                        	<button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Teaching Block</button>
+                        </a>
+
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <h4 class="panel-title">Teaching Files</h4>
+                </div>
+
+               	<div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Creation Date</th>
+                                <th>Author</th>
+                                <th>Type</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>MR Teaching Block</td>
+                                <td>MR Teaching Block for students</td>
+                                <td>2014.02.03</td>
+                                <td>Dr. Goldman</td>
+                                <td>Cases</td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs m-r-5 " href="/teaching_blocks/edit">Edit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+	    </div>
+	</div>
+</div>
+
+
+
+
+<!-- #modal-dialogs -->
+
+
+
+<!-- #ADDDIALOG modal-dialog -->
+<div class="modal fade" id="add-dialog">
+    <div class="modal-dialog" style="width : 40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Create Teaching Block</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Title</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control input-sm" placeholder="Enter Title" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-8">
+                                <input type="textarea" rows="3" class="form-control input-sm" placeholder="Enter Description" />                                  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Type</label>
+                            <div class="col-md-8">
+                                <select class="form-control">
+                                    <option>Cases</option>
+                                    <option>Teaching Points</option>
+                                    <option>Teaching Files</option>
+                                    <option>Teaching Case Reports</option>
+                                    <option>Videos</option>
+                                    <option>References</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="/teaching_blocks/edit" class="btn btn-sm btn-success">Create Teaching Block</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #EDIT -->
+<!-- #modal-dialog -->
+<div class="modal fade" id="edit-dialog">
+    <div class="modal-dialog" style="width : 40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Edit Case properties</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Case ID</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" placeholder="1" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Creation Date</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="datepicker-autoClose" placeholder="1999-05-15" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Author</label>
+                        <div class="col-md-4">
+                            <select class="form-control">
+                                <option>Dr. Goldman</option>
+                                <option>Dr. Ghandi</option>
+                                <option>Dr. Shastri</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Modality</label>
+                        <div class="col-md-2">
+                            <select class="form-control">
+                                <option>MR</option>
+                                <option>CT</option>
+                                <option>CR</option>
+                                <option>MG</option>
+                                <option>PET</option>
+                                <option>US</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Sub-Specialty</label>
+                        <div class="col-md-6">
+                            <select class="form-control">
+                                <option>Neuroradiology</option>
+                                <option>Body</option>
+                                <option>Breast</option>
+                                <option>Chest</option>
+                                <option>Pet/CT</option>
+                                <option>Cardiac</option>
+                                <option>Nuclear Medicine</option>
+                                <option>Vascular Imaging</option>
+                                <option>Interventional Radiology</option>
+                                <option>Pediatric</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Title</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Good MR Case" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Description</label>
+                        <div class="col-md-6">
+                            <textarea class="form-control" placeholder="The MR of the knee shows why you shouldn't ski." rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Clinical History</label>
+                        <div class="col-md-6">
+                            <textarea class="form-control" placeholder="Patient fell while skiing" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Access</label>
+                        <div class="col-md-7" data-scrollbar="true" data-height="120px">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Read</th>
+                                        <th>Modify</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dr. Goldman</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Ghandi</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Shastri</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Smith</td>
+                                        <td><input type="checkbox" value="" /></td>
+                                        <td><input type="checkbox" value="" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>                                                
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

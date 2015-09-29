@@ -16,7 +16,8 @@
             alert("seriesUID = " + data);
             var jsonURL = 'http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies';
             var jsonData = { 'includefield' : 'all',
-                             'StudyInstanceUID' : data 
+                             'StudyInstanceUID' : data,
+                             'withCredentials' : true
                             }
             
             // this does not work
@@ -39,7 +40,7 @@
         // end eventHandler
 
         function processJsonData(data) {
-
+            alert("success" + data);
 
             // data should have the following fields
             /*
