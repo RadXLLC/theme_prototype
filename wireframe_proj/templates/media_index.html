@@ -1,0 +1,368 @@
+{% extends "base.html" %}
+{% block title %}Media Center{% endblock %}
+{% block head %}RadX Content Editor Application{% endblock %}
+{% block content %}
+
+    <script>
+        // archive will send message with studyUID of uploaded study when finished
+        // using a postMessage()
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventHandler = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        eventHandler(messageEvent, function(e) {
+            var key = e.message ? "message" : "data";
+            var data = e[key];
+            alert("seriesUID = " + data);
+            var jsonURL = 'http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies';
+            var jsonData = { 'includefield' : 'all',
+                             'StudyInstanceUID' : data,
+                             'withCredentials' : true
+                            }
+            
+            // this does not work
+            $.getJSON(jsonURL, jsonData, processJsonData );
+            // have to use something similar to 
+            // fetch_studies in case/views.py from the demo project
+            // also see getData in cases/cases.js
+            // The request for the studies info has the form
+            //http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies?includefield=all&StudyInstanceUID=data
+            /*  Put in studies/views.py
+                def fetch_study_info(request, page=100):
+                    requestURL = 'http://52.11.158.42:8080/dcm4chee-arc/qido/DCM4CHEE/studies'
+                    requestURL += '?includefield=all&StudyInstanceUID=' + data
+
+                    req = urllib2.Request((requestURL),headers = {'Accept': 'application/json'})
+                    res = urllib2.urlopen(req)
+                    return HttpResponse(res.read(), content_type="application/json")
+            */
+        }, false);
+        // end eventHandler
+
+        function processJsonData(data) {
+            alert("success" + data);
+
+            // data should have the following fields
+            /*
+                study_UID = data.StudyInstanceUID
+                study_date_time = data.StudyDate + data.StudyTime
+                study_modality = data.ModalitiesInStudy
+                study_description = data.StudyDescription
+                number_of_series = data.NumberOfStudyRelatedSeries
+                numberOfImages = data.NumberOfStudyRelatedInstances
+            */
+        }
+        // end processJsonData
+
+    </script>
+
+
+<div id="content" class="content">
+	<!-- begin breadcrumb -->
+	<ol class="breadcrumb pull-right">
+		<li><a href="javascript:;">Home</a></li>
+		<li><a href="../">Content</a></li>
+		<li class="active">Media Center</li>
+	</ol>
+	<!-- end breadcrumb -->
+	<!-- begin page-header -->
+	<h1 class="page-header">Media Center <small></small></h1>
+	<!-- end page-header -->
+	
+	<!-- begin row -->
+	<div class="row">
+	    <!-- begin col-6 -->
+	    <div class="col-md-12">
+	        <!-- begin panel -->
+	        <!-- begin panel -->
+            <div class="panel panel-inverse overflow-hidden">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#search">
+                            <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-search"></i> Search</button>
+                        </a>
+                    </div>
+                    <div class="panel-heading-btn">
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#addVideo">
+                            <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Video</button>
+                        </a>
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#addReference">
+                            <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Reference</button>
+                        </a>
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#addPicture">
+                            <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Picture</button>
+                        </a>
+                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion" href="#addDocument">
+                            <button type="button" class="btn btn-xs btn-inverse"><i class="fa fa-plus"></i> Add Document</button>
+                        </a>
+                    </div>
+                    <h4 class="panel-title">Media Center</h4>
+
+                </div>
+
+
+                <!-- begin accordian - ADDSTUDY -->
+                <div id="addVideo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                            <!-- begin wizard step-1 -->
+                            <div>
+                                <form id="fileupload" action="assets/global/plugins/jquery-file-upload/server/php/" method="POST" enctype="multipart/form-data">
+                                    <div class="row fileupload-buttonbar">
+                                        <div class="col-md-7">
+                                            <span class="btn btn-success fileinput-button">
+                                                <i class="fa fa-plus"></i>
+                                                <span>Browse for Video...</span>
+                                                <input type="file" name="files[]" multiple>
+                                            </span>
+                                            <button type="submit" class="btn btn-primary start">
+                                                <i class="fa fa-upload"></i>
+                                                <span>Start upload</span>
+                                            </button>
+                                            <button type="reset" class="btn btn-warning cancel">
+                                                <i class="fa fa-ban"></i>
+                                                <span>Cancel upload</span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger delete">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                                <span>Delete</span>
+                                            </button>
+                                            <!-- The global file processing state -->
+                                            <span class="fileupload-process"></span>
+                                        </div>
+                                        <!-- The global progress state -->
+                                        <div class="col-md-5 fileupload-progress fade">
+                                            <!-- The global progress bar -->
+                                            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                                            </div>
+                                            <!-- The extended global progress state -->
+                                            <div class="progress-extended">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                    <!-- The table listing the files available for upload/download -->
+                                    <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+                                </form>                           
+                            </div>
+                            <div>
+                                <legend class="pull-left width-full">Edit Video Information</legend>
+                                <form class="form-inline">
+                                    <div class="form-group m-t-0">
+                                        <label class="control-label">ID</label>
+                                        <input type="text" class="form-control" placeholder="1" disabled />
+                                    </div>
+                                    <div class="form-group m-t-0">
+                                        <label class="control-label">Title</label>
+                                        <input type="text" class="form-control" placeholder="Title of Video" />
+                                    </div>
+                                    <div class="form-group m-r-10">
+                                        <label class="control-label">Description</label>
+                                        <textarea class="form-control" placeholder="Description of Video" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group m-r-10">
+                                        <label class="control-label">Upload Date</label>
+                                            <input type="text" class="form-control datepicker-autoClose" placeholder="2015-05-15" />
+                                    </div>
+                                    <div class="form-group m-r-10">
+                                        <label class="control-label">Author</label>
+                                        <select class="form-control">
+                                            <option>Dr. Goldman</option>
+                                            <option>Dr. Ghandi</option>
+                                            <option>Dr. Shastri</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <p class="text-right m-b-0">
+                                            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                                            <a href="javascript:;" class="btn btn-sm btn-success">Add Video</a>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- end wizard step-2 -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end accordian - ADDSTUDY -->
+
+
+
+
+
+                    <!-- #EDIT -->
+                    <!-- #modal-dialog -->
+                    <div class="modal fade" id="edit-dialog">
+                        <div class="modal-dialog" style="width : 40%">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Edit Study Access<small> allow other users to read or modify this study</small></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Access</label>
+                                            <div class="col-md-7" data-scrollbar="true" data-height="120px">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>User</th>
+                                                            <th>Read</th>
+                                                            <th>Modify</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Dr. Goldman</td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dr. Ghandi</td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dr. Shastri</td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dr. Smith</td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                            <td><input type="checkbox" value="" /></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>                                                
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+                                    <a href="javascript:;" class="btn btn-sm btn-success">Save Changes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+               	<div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Upload Date</th>
+                                <th>Author</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <a href="#" id="comments" data-type="text" data-pk="1" data-placeholder="Title" data-original-title="Description">Heart Video</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Description" data-original-title="Description">Video of the Heart</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Type" data-original-title="Description">Video</a>
+                                </td>
+                                <td>
+                                    <a href="#" class="radx_datepicker" id="uploadDate" data-type="date" data-viewformat="yyyy.mm.dd" data-pk="1" data-placement="right" data-title="Study Date">2015.08.25</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="author" data-type="select" data-pk="1" data-value="1" data-title="Author">CT</a>
+                                </td>
+                                <td>
+                                    <a href="#edit-dialog" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Access</a>
+                                    <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Video</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    <a href="#" id="comments" data-type="text" data-pk="1" data-placeholder="Title" data-original-title="Description">Heart Picture</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Description" data-original-title="Description">Nice Picture of the heard</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Type" data-original-title="Description">Picture</a>
+                                </td>
+                                <td>
+                                    <a href="#" class="radx_datepicker" id="uploadDate" data-type="date" data-viewformat="yyyy.mm.dd" data-pk="1" data-placement="right" data-title="Study Date">2015.08.25</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="author" data-type="select" data-pk="1" data-value="1" data-title="Author">CT</a>
+                                </td>
+                                <td>
+                                    <a href="#edit-dialog" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Access</a>
+                                    <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Picture</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    <a href="#" id="comments" data-type="text" data-pk="1" data-placeholder="Title" data-original-title="Description">The Dummies Guide to the Heart</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Description" data-original-title="Description">Good book for to get you started on the heart</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Type" data-original-title="Description">Reference</a>
+                                </td>
+                                <td>
+                                    <a href="#" class="radx_datepicker" id="uploadDate" data-type="date" data-viewformat="yyyy.mm.dd" data-pk="1" data-placement="right" data-title="Study Date">2015.08.25</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="author" data-type="select" data-pk="1" data-value="1" data-title="Author">CT</a>
+                                </td>
+                                <td>
+                                    <a href="#edit-dialog" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Access</a>
+                                    <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Reference</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <a href="#" id="comments" data-type="text" data-pk="1" data-placeholder="Title" data-original-title="Title">PubMed: Treating heart failure</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Description" data-original-title="Description">Until 1986 the management of most patients with heart failure had relied on the symptomatic relief of the features of congestion by the use of diuretics, with or without digoxin. These measures had no impact on patients’ poor prognosis. Since then, several hypotheses into the management of heart failure have been developed, including the haemodynamic, the neuro-endocrine and the inflammatory hypotheses. Several classes of drugs have been introduced, with significant impact on patients’ morbidity and mortality. Medical therapy is now available with two aims:</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Type" data-original-title="Description">Document</a>
+                                </td>
+                                <td>
+                                    <a href="#" class="radx_datepicker" id="uploadDate" data-type="date" data-viewformat="yyyy.mm.dd" data-pk="1" data-placement="right" data-title="Study Date">2015.08.25</a>
+                                </td>
+                                <td>
+                                    <a href="#" id="author" data-type="select" data-pk="1" data-value="1" data-title="Author">CT</a>
+                                </td>
+                                <td>
+                                    <a href="#edit-dialog" data-toggle="modal" class="btn btn-primary btn-xs m-r-5">Access</a>
+                                    <a href="javascript:;" class="btn btn-primary btn-xs m-r-5">View Document</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end panel -->
+	        <!-- begin panel -->
+
+           <!-- end panel -->
+	    </div>
+	    <!-- end col-6 -->
+	    <!-- begin col-6 -->
+	</div>
+	<!-- end row -->
+</div>
+
+
+{% endblock %}
